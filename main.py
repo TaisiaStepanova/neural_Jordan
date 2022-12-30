@@ -29,6 +29,12 @@ if __name__ == '__main__':
 
     elif menu == '2':
 
+        print('Enter filename with trained weights: ')
+        for filename in os.listdir("data"):
+            if filename != '.ipynb_checkpoints':
+                print('- ', filename)
+        filename = input()
+
         print('Enter the elements of the sequence, press "enter"')
         print('to finish typing press "enter"')
         a = float(input('-->> '))
@@ -41,4 +47,4 @@ if __name__ == '__main__':
                 break
 
         n = input("Enter the number of predictions: ")
-        prediction(sequence, int(n))
+        prediction(sequence, int(n), filename)

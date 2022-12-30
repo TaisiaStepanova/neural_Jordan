@@ -2,14 +2,15 @@ import random
 import json
 import math
 import copy
+import os
 
 def set_data_in_file(col, w1, w2):
     with open('data00.json', 'w', encoding="utf-8") as w:
         temp_dict = {"col": col, "w1": w1, "w2": w2}
         json.dump(temp_dict, w, indent=2)
 
-def get_data_from_file():
-    with open('data0.json', 'r', encoding="utf-8") as file:
+def get_data_from_file(filename):
+    with open('data/' + filename, 'r', encoding="utf-8") as file:
         info = json.load(file)
         return info['col'], info['w1'], info['w2']
 
@@ -132,8 +133,8 @@ def training(p, e, alpha, N, col_training_matrix, train):
     set_data_in_file(col_training_matrix, W1, W2)
     print("Done")
 
-def prediction(sequence, n):
-    col, W1, W2 = get_data_from_file()
+def prediction(sequence, n, file):
+    col, W1, W2 = get_data_from_file(file)
     if len(sequence) < col:
         print("Not enough data")
         return
