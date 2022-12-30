@@ -4,12 +4,12 @@ import math
 import copy
 
 def set_data_in_file(col, w1, w2):
-    with open('data2.json', 'w', encoding="utf-8") as w:
+    with open('data00.json', 'w', encoding="utf-8") as w:
         temp_dict = {"col": col, "w1": w1, "w2": w2}
         json.dump(temp_dict, w, indent=2)
 
 def get_data_from_file():
-    with open('data2.json', 'r', encoding="utf-8") as file:
+    with open('data0.json', 'r', encoding="utf-8") as file:
         info = json.load(file)
         return info['col'], info['w1'], info['w2']
 
@@ -96,9 +96,9 @@ def countFirstW(W1, W2, standard, Z, X, Y, alpha):
 def training(p, e, alpha, N, col_training_matrix, train):
     training_sequences = get_sequences()
     row_training_matrix = len(training_sequences[0]) - col_training_matrix - 2
-    #W1 = init_w_matrix(col_training_matrix + 1, p)
-    #W2 = init_w_matrix(p, 1)
-    col, W1, W2 = get_data_from_file()
+    W1 = init_w_matrix(col_training_matrix + 1, p)
+    W2 = init_w_matrix(p, 1)
+    #col, W1, W2 = get_data_from_file()
     E = [99999]
     iteration = 0
     while sum_error(E) > e and iteration < N:

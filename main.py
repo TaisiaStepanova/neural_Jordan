@@ -18,8 +18,8 @@ if __name__ == '__main__':
             col = input("Enter col: ")
         elif sett == '2':
             p = 8
-            e = 0.00001
-            alpha = 0.001
+            e = 0.000001
+            alpha = 0.1
             N = 100000
             col = 4
 
